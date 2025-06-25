@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Work\\MatchMaking\\MatchMaking.Service\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B3E5E2B2-6BCD-4CEE-AF7B-54AD3221410E}|MatchMaking.Service.csproj|c:\\work\\matchmaking\\matchmaking.service\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B3E5E2B2-6BCD-4CEE-AF7B-54AD3221410E}|MatchMaking.Service.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3E5E2B2-6BCD-4CEE-AF7B-54AD3221410E}|MatchMaking.Service.csproj|c:\\work\\matchmaking\\matchmaking.service\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{B3E5E2B2-6BCD-4CEE-AF7B-54AD3221410E}|MatchMaking.Service.csproj|solutionrelative:dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3E5E2B2-6BCD-4CEE-AF7B-54AD3221410E}|MatchMaking.Service.csproj|c:\\work\\matchmaking\\matchmaking.service\\controllers\\matchmakingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3E5E2B2-6BCD-4CEE-AF7B-54AD3221410E}|MatchMaking.Service.csproj|solutionrelative:controllers\\matchmakingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3E5E2B2-6BCD-4CEE-AF7B-54AD3221410E}|MatchMaking.Service.csproj|c:\\work\\matchmaking\\matchmaking.service\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3E5E2B2-6BCD-4CEE-AF7B-54AD3221410E}|MatchMaking.Service.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Work\\MatchMaking\\MatchMaking.Service\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Work\\MatchMaking\\MatchMaking.Service\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-25T19:13:02.866Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MatchMakingService.cs",
+              "DocumentMoniker": "C:\\Work\\MatchMaking\\MatchMaking.Service\\Controllers\\MatchMakingService.cs",
+              "RelativeDocumentMoniker": "Controllers\\MatchMakingService.cs",
+              "ToolTip": "C:\\Work\\MatchMaking\\MatchMaking.Service\\Controllers\\MatchMakingService.cs",
+              "RelativeToolTip": "Controllers\\MatchMakingService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-25T18:47:08.712Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Work\\MatchMaking\\MatchMaking.Service\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Work\\MatchMaking\\MatchMaking.Service\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAYAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-25T18:42:08.566Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Work\\MatchMaking\\MatchMaking.Service\\Dockerfile",
+              "RelativeDocumentMoniker": "Dockerfile",
+              "ToolTip": "C:\\Work\\MatchMaking\\MatchMaking.Service\\Dockerfile",
+              "RelativeToolTip": "Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-06-25T18:40:46.953Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
