@@ -2,17 +2,16 @@
 
 # This stage is used when running from VS in fast mode (Default for Debug configuration)
 FROM mcr.microsoft.com/dotnet/runtime:9.0 AS base
-USER $APP_UID
 WORKDIR /app
 
 
 # This stage is used to build the service project
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
-COPY ["MatchMaking.Worker/MatchMaking.Worker.csproj", "MatchMaking.Worker/"]
-RUN dotnet restore "MatchMaking.Worker/MatchMaking.Worker.csproj"
+COPY ["MatchMaking.Worker.csproj", "."]
+RUN dotnet restore "MatchMaking.Worker.csproj"
 COPY . .
-WORKDIR "/src/MatchMaking.Worker"
+WORKDIR "/src"
 RUN dotnet build "MatchMaking.Worker.csproj" -c Release -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage

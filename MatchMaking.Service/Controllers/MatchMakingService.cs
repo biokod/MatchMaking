@@ -36,15 +36,3 @@ public class MatchMakingService : ControllerBase
 		return Ok(new { match.MatchId, match.UserIds });
 	}
 }
-
-public interface IMatchRepository
-{
-	Task<Match> GetMatchByUserId(string userId);
-	Task SaveMatch(Match match);
-}
-
-public class Match
-{
-	public string MatchId { get; set; }
-	public List<string> UserIds { get; set; }
-}
