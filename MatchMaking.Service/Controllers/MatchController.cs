@@ -2,18 +2,20 @@
 using Confluent.Kafka;
 using System.Threading.Tasks;
 
-public class MatchMakingService : ControllerBase
+[ApiController]
+[Route("match")]
+public class MatchController : ControllerBase
 {
 	private readonly IProducer<string, string> _kafkaProducer;
 	private readonly IMatchRepository _matchRepository;
 
-	public MatchMakingService(IProducer<string, string> kafkaProducer, IMatchRepository matchRepository)
+	public MatchController(IProducer<string, string> kafkaProducer, IMatchRepository matchRepository)
 	{
 		_kafkaProducer = kafkaProducer;
 		_matchRepository = matchRepository;
 	}
 
-	[HttpPost("match/search")]
+	[HttpPost("search")]
 	public async Task<IActionResult> SearchMatch([FromQuery] string userId)
 	{
 		if (string.IsNullOrEmpty(userId))
@@ -23,7 +25,7 @@ public class MatchMakingService : ControllerBase
 		return NoContent();
 	}
 
-	[HttpGet("match/info")]
+	[HttpGet("info")]
 	public async Task<IActionResult> GetMatchInfo([FromQuery] string userId)
 	{
 		if (string.IsNullOrEmpty(userId))
