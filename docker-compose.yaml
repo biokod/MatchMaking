@@ -1,12 +1,8 @@
 version: '3.8'
-services:
 
+services:
   zookeeper:
-    image: confluentinc/cp-zookeeper:7.4.4
-    hostname: zookeeper
-    container_name: zookeeper
-    ports:
-      - "2181:2181"
+    image: confluentinc/cp-zookeeper:7.0.1
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
@@ -16,38 +12,36 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      - matchmaking-network
-      
+      - matchmaking-net
+
   kafka:
-    image: confluentinc/cp-kafka:7.4.4
-    ports:
-      - "9092:9092"
-      - "9101:9101"
-    environment:
-      KAFKA_BROKER_ID: 1
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
-      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
-      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
-      KAFKA_JMX_PORT: 9101
-      KAFKA_JMX_OPTS: -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=kafka -Dcom.sun.management.jmxremote.rmi.port=9101
+    image: confluentinc/cp-kafka:7.0.1
     depends_on:
       zookeeper:
         condition: service_healthy
+    ports:
+      - "9092:9092"  # For internal Docker communication
+      - "29092:29092"  # For external access (e.g., localhost)
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,PLAINTEXT_HOST://0.0.0.0:29092
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     healthcheck:
-      test: ["CMD", "kafka-topics", "--list", "--bootstrap-server", "localhost:9092"]
-      interval: 20s
-      timeout: 10s
+      test: ["CMD", "kafka-topics", "--list", "--bootstrap-server", "kafka:9092"]
+      interval: 10s
+      timeout: 5s
       retries: 5
-    networks:
-      - matchmaking-network
     volumes:
-      - kafka-data:/var/lib/kafka/data
+      - ./kafka-log4j.properties:/etc/kafka/log4j.properties
+    networks:
+      - matchmaking-net
 
   redis:
-    image: redis:7.0
+    image: redis:6.2
     ports:
       - "6379:6379"
     healthcheck:
@@ -56,75 +50,53 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      - matchmaking-network
-    volumes:
-      - redis-data:/data
+      - matchmaking-net
 
   matchmaking-service:
-    image: matchmaking-service:latest
     build:
       context: ./MatchMaking.Service
       dockerfile: Dockerfile
+    depends_on:
+      kafka:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     ports:
-      - "5000:8080"
+      - "5000:80"
     environment:
-      - Kafka__BootstrapServers=kafka:9092
-      - Redis__ConnectionString=redis:6379
-    depends_on:
-      kafka:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
     networks:
-      - matchmaking-network
+      - matchmaking-net
 
-  matchmaking-worker1:
-    image: matchmaking-worker:latest
+  matchmaking-worker-1:
     build:
       context: ./MatchMaking.Worker
       dockerfile: Dockerfile
-    container_name: matchmaking-worker-1
-    environment:
-      - Kafka__BootstrapServers=kafka:9092
-      - Redis__ConnectionString=redis:6379
-      - MatchMaking__UsersPerMatch=3
     depends_on:
       kafka:
         condition: service_healthy
       redis:
         condition: service_healthy
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
     networks:
-      - matchmaking-network
+      - matchmaking-net
 
-  matchmaking-worker2:
-    image: matchmaking-worker:latest
+  matchmaking-worker-2:
     build:
       context: ./MatchMaking.Worker
       dockerfile: Dockerfile
-    container_name: matchmaking-worker-2
-    environment:
-      - Kafka__BootstrapServers=kafka:9092
-      - Redis__ConnectionString=redis:6379
-      - MatchMaking__UsersPerMatch=3
     depends_on:
       kafka:
         condition: service_healthy
       redis:
         condition: service_healthy
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
     networks:
-      - matchmaking-network
-
-volumes:
-  zookeeper-data:
-  kafka-data:
-  redis-data:
+      - matchmaking-net
 
 networks:
-  matchmaking-network:
+  matchmaking-net:
     driver: bridge

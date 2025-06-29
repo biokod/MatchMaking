@@ -1,4 +1,4 @@
-@MatchMaking.Service_HostAddress = http://localhost:5202
+@MatchMaking.Service_HostAddress = http://localhost:5163
 
 GET {{MatchMaking.Service_HostAddress}}/weatherforecast/
 Accept: application/json

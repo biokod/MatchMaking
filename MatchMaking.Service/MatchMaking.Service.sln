@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35806.99 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchMaking.Service", "MatchMaking.Service.csproj", "{B3E5E2B2-6BCD-4CEE-AF7B-54AD3221410E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchMaking.Service", "MatchMaking.Service.csproj", "{7ED58616-5D1A-4702-9531-5F6FE8EE344F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B3E5E2B2-6BCD-4CEE-AF7B-54AD3221410E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B3E5E2B2-6BCD-4CEE-AF7B-54AD3221410E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B3E5E2B2-6BCD-4CEE-AF7B-54AD3221410E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B3E5E2B2-6BCD-4CEE-AF7B-54AD3221410E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ED58616-5D1A-4702-9531-5F6FE8EE344F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ED58616-5D1A-4702-9531-5F6FE8EE344F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ED58616-5D1A-4702-9531-5F6FE8EE344F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ED58616-5D1A-4702-9531-5F6FE8EE344F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {558519AD-B9C8-4B77-A44E-6273356240E9}
+		SolutionGuid = {EF19FCCB-CA2A-411C-AAE7-2971157B9CEB}
 	EndGlobalSection
 EndGlobal
